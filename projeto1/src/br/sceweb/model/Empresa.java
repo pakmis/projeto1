@@ -1,18 +1,48 @@
 package br.sceweb.model;
-import java.sql.SQLException;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import br.sceweb.serviço.FabricaDeConexoes;
+
 
 public class Empresa {
-
-	public int adiciona(Empresa empresa){
-		PreparedStatement ps;
-		int codigoRetorno=0;
-		try (Connection conn = new FabricaDeConexoes().getConnection()){
-		} catch (SQLException e){
-		throw new RuntimeException(e);
-		}
-		return 1;
-		}
+	String cnpj;
+	String nomeDaEmpresa;
+	String nomeFantasia;
+	String endereco;
+	String telefone;
+	
+	public String getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	public String getNomeDaEmpresa() {
+		return nomeDaEmpresa;
+	}
+	public String setNomeDaEmpresa(String nomeDaEmpresa) {
+		String msg = "";
+		if (nomeDaEmpresa.equals("")) {
+		msg = "Nome da empresa inválido!";
+		} else
+		this.nomeDaEmpresa = nomeDaEmpresa;
+		return msg;
+	}
+	public String getNomeFantasia() {
+		return nomeFantasia;
+	}
+	public void setNomeFantasia(String nomeFantasia) {
+		this.nomeFantasia = nomeFantasia;
+	}
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
+	
 }

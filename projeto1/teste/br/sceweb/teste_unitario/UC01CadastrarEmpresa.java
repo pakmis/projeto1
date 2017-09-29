@@ -15,8 +15,14 @@ public class UC01CadastrarEmpresa {
 	static Empresa empresa;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		empresaDAO = new EmpresaDAO();
-		empresa = new Empresa();
+		
+			empresaDAO = new EmpresaDAO();
+			empresa = new Empresa();
+			empresa.setNomeDaEmpresa("empresa x");
+			empresa.setCnpj("89424232000180");
+			empresa.setNomeFantasia("empresa x");
+			empresa.setEndereco("rua taquari");
+			empresa.setTelefone("2222");
 	}
 
 	@AfterClass

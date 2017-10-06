@@ -1,9 +1,12 @@
 package br.sceweb.teste_unitario;
 
+
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import br.sceweb.model.Empresa;
@@ -29,10 +32,34 @@ public class UC01CadastrarEmpresa {
 	public static void tearDownAfterClass() throws Exception {
 	}
 
+	@After
+	public void excluiEmpresa() throws Exception{
+		empresaDAO.exclui("89424232000180");
+		}
+	/*
+	 * 
+	 * Test1 verifica a inserção correta de uma empresa
+	 */
 	@Test
-	public void test() {
-		assertEquals(1, empresaDAO.adiciona(empresa));
+	public void test1() {		 
+		 assertEquals(1, empresaDAO.adiciona(empresa));
+	}
+	/*
+	 * Test2 verifica a inserção duplicada no banco de dados
+	 */
+	@Test
+	public void test2() {
+		 empresaDAO.adiciona(empresa);
+		 assertEquals(1, empresaDAO.adiciona(empresa));		 
+	}
+	/*
+	 * Test3 verifica se o cnpj inserido e valido
+	 */
+	@Test
+	public void test3() {
+		assertEquals("CNPJ valido", empresa.setCnpj("89424232000180"));
 		
 	}
+	
 
 }
